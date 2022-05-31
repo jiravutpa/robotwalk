@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width:200px;
+        height:200px;
+    }
+
+    td,
+    th {
+        border: 1px solid rgb(0, 0, 0);
+        text-align: left;
+    }
+    #aa {
+        background-color:#00FF00;
+    }
+</style>
+
+<body>
+    <h4>Robot Walk</h4>
+    <p>คำสั่ง Robot Walk</p>
+    <input type="text" id="myInput"><br><br>
+    <button type="button" class="button" onclick="getInputValue();">คำนวณ</button><br><br>
+    <p id="ans"></p>
+
+    <script>
+        function getInputValue() {
+            var inputVal = document.getElementById("myInput").value;
+            var point = "N";
+            var x = 0;
+            var y = 0;
+            for (let i = 0; i < inputVal.length; i++) {
+                var inp = inputVal[i];
+                if (inp == "W") {
+                    if (point == "W") {
+                        x -= 1;
+                    } else if (point == "S") {
+                        y -= 1;
+                    } else if (point == "E") {
+                        x += 1;
+                    } else {
+                        y += 1;
+                    }
+                }
+                else if (inp == "R") {
+                    if (point == "N") {
+                        point = "E";
+                    } else if (point == "E") {
+                        point = "S";
+                    } else if (point == "S") {
+                        point = "W";
+                    } else if (point == "W") {
+                        point = "N";
+                    }
+                } else if (inp == "L") {
+                    if (point == "N") {
+                        point = "W";
+                    } else if (point == "W") {
+                        point = "S";
+                    } else if (point == "S") {
+                        point = "E";
+                    } else if (point == "E") {
+                        point = "N";
+                    }
+                }
+
+                console.log(x, y)
+            }; document.getElementById("ans").innerHTML = "ตำแหน่งปัจจุบัน ( " + (x) + " , " + (y) + " )";
+        }
+    </script>
+</body>
+
+</html>
